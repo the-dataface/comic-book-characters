@@ -143,7 +143,7 @@ function setupSwarm() {
         }))
         .range([0, swarmH]);
 
-    swarmRScale = d3.scaleSqrt()
+    swarmRScale = d3.scaleLinear()
         .domain(d3.extent(comicWeightData, function(d) {
             return d.appearances;
         }))
