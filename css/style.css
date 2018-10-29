@@ -1,0 +1,125 @@
+body {
+    margin:0;
+}
+
+.tooltip {
+    position: absolute;
+    background: white;
+    pointer-events: none;
+    border:1px solid black;
+    padding:5px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 2px 10px;
+    border-radius:3px;
+    display:none;
+    z-index:999;
+}
+
+.bold-text {
+    font-weight:600;
+}
+
+#project-wrapper {
+    background:#37609B;
+}
+
+#header-wrapper {
+    height:250px;
+    width:100%;
+    position:relative;
+}
+
+#header-container {
+    background:black;
+    color:white;
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%);
+    padding:10px;
+    text-align:center;
+    width:800px;
+}
+
+#header-wrapper h1 {
+    font-family:'Bangers', cursive;
+    font-size:60px;
+    margin:0px 0px 20px 0px;
+    letter-spacing:2px;
+}
+
+#header-wrapper h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size:22px;
+    margin:0;
+}
+
+.copy-section {
+    width:600px;
+    margin:auto;
+    font-family: 'Mada', sans-serif;
+}
+
+.copy-section p {
+    margin-bottom:20px;
+    font-size:20px;
+    font-weight:400;
+}
+
+#swarm-wrapper {
+    
+}
+
+#swarm-container {
+    width:100%;
+    display:flex;
+    position:relative;
+}
+
+.swarm-half {
+    position:relative;
+}
+
+.hero-img {
+    position:absolute;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:998;
+    transform:translate(-50%, -50%);
+}
+
+#swarm-tooltip {
+
+}
+
+#swarm-tooltip h3 {
+    font-family:'Bangers', cursive; 
+    letter-spacing:2px;
+    margin:0px 0px 5px 0px;
+}
+
+#swarm-tooltip p {
+    font-family: 'Rajdhani', sans-serif;
+    margin:0;
+}
+
+.swarm-axis-svg {
+    position:absolute;
+    top:0;
+    left:0;
+}
+
+.swarm-y-axis .domain {
+    display:none;
+}
+
+.swarm-y-axis .tick text{
+    fill:white;
+    font-size:20px;
+    font-family:'Bangers', cursive; 
+    letter-spacing:1px;
+}
+
+.swarm-y-axis .tick line{
+    stroke:#3e6cae;
+    stroke-width:2px;
+}
