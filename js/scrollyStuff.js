@@ -29,6 +29,10 @@ function handleResize() {
 // scrollama event handlers
 function handleStepEnter(response) {
     // response = { element, direction, index }
+    step.classed('is-active', function (d, i) {
+        return i === response.index;
+    })
+    
     if (response.index == 0) {
         updateScatter('All');
     } else if (response.index == 1) {
