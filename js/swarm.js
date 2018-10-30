@@ -1,7 +1,5 @@
 //set up swarm
 //data
-var swarmData,
-    swarmAvgsData;
 
 //containers
 var swarmSectionWrapper = d3.select('#swarm-section-wrapper'),
@@ -22,12 +20,6 @@ var swarmYScale,
     swarmRScale,
     swarmColorScale;
 
-//other
-var swarmColors = {
-    'Male':'black',
-    'Female':'white'
-};
-
 //build after setup
 function buildSwarm()   {
     swarmContainer.select('div').remove();
@@ -46,7 +38,7 @@ function buildSwarm()   {
         .tickSize(-swarmOuterW)
         .tickFormat(function(d) {
             return d + ' lbs';
-        })
+        });
 
     var swarmYAxisG = swarmAxisG.append("g")
         .attr('class', 'swarm-y-axis')
@@ -100,7 +92,7 @@ function buildSwarm()   {
             .attr("r", function(d) { return swarmRScale(d.data.appearances); })
             .attr("cx", function(d) { return d.data.x; })
             .attr("cy", function(d) { return d.data.y; })
-            .attr('fill', swarmColors[thisGender])
+            .attr('fill', genderColors[thisGender])
             .attr('stroke', '#37609B')
             .attr('stroke-width', '.2')
             .on("mouseover", function(d) {

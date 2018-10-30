@@ -8,6 +8,12 @@ var isDesktop = false,
     isTablet = false,
     isMobile = false;
 
+var genderColors = {
+    'Male':'black',
+    'Female':'white',
+    'All':'grey'
+};
+
 function resizeGeneral() {
     windowW = window.innerWidth,
     windowH = window.innerHeight;
@@ -28,6 +34,7 @@ function resizeGeneral() {
         }
 
         initSwarm();
+        initScatter();
     }
 }
 
