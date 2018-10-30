@@ -22,9 +22,63 @@ var scatterXScale,
     scatterColorScale;
 
 //other
-var scatterRadius = 2;
+var scatterRadius = 2,
+    heightWeightRanges = {
+        'All' : {
+            'bottomY1': 85.5,
+            'topY1': 115.5,
+            'bottomY2': 152,
+            'topY2': 205.4
+        },
+        'Male' : {
+            'bottomY1': 85.5,
+            'topY1': 115.5,
+            'bottomY2': 152,
+            'topY2': 205.4
+        },
+        'Female': {
+            'bottomY1': 85.5,
+            'topY1': 115.5,
+            'bottomY2': 152,
+            'topY2': 205.4
+        }
+    };
 
-function updateScatter(gender) {
+function updateScatterLines(gender) {
+    var startX = scatterXScale(57),
+        endX = scatterXScale(76),
+        bottomY1 = scatterYScale(heightWeightRanges[gender]['bottomY1']),
+        bottomY2 = scatterYScale(heightWeightRanges[gender]['bottomY2']),
+        topY1 = scatterYScale(heightWeightRanges[gender]['topY1']),
+        topY2 = scatterYScale(heightWeightRanges[gender]['topY2']);
+
+    scatterG.selectAll('.healthy-weight-line').remove();
+
+    scatterG.append('line')
+        .attr('class', 'healthy-weight-line')
+        .attr('x1', startX)
+        .attr('x2', startX)
+        .attr('y1', bottomY1)
+        .attr('y2', bottomY1)
+        .transition()
+        .duration(2000)
+        .attr('x2', endX)
+        .attr('y2', bottomY2);
+
+    scatterG.append('line')
+        .attr('class', 'healthy-weight-line')
+        .attr('x1', startX)
+        .attr('x2', startX)
+        .attr('y1', topY1)
+        .attr('y2', topY1)
+        .transition()
+        .duration(2000)
+        .attr('x2', endX)
+        .attr('y2', topY2);
+
+}
+
+function updateScatterDots(gender) {
     var filteredData;
     if (gender == 'All') {
         filteredData = scatterData;
@@ -62,26 +116,6 @@ function updateScatter(gender) {
         .transition()
         .duration(1000)
         .attr('r', function(d) { return scatterRScale(d.count);});
-
-
-    /*
-    scatterG.selectAll('.scatter-dot')
-        .transition()
-        .delay(1100)
-        .data(filteredData)
-        .enter()
-        .append('circle')
-        .attr('class', 'scatter-dot')
-        .attr('cx', function(d) { return scatterXScale(d.height);})
-        .attr('cy', function(d) { return scatterYScale(d.weight);})
-        .attr('r', 0)
-        .attr('stroke', function(d) { return '#37609B'; })
-        .attr('stroke-width', function(d) { return '1'; })
-        .attr('fill', 'grey')
-        .transition()
-        .duration(1000)
-        .attr('r', function(d) { return scatterRScale(d.count);});
-    */
 
 }
 

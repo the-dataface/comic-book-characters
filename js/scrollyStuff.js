@@ -25,6 +25,7 @@ function handleResize() {
         .style('height', Math.floor(window.innerHeight * .75) + 'px');
     // 3. tell scrollama to update new element dimensions
     scroller.resize();
+    
 }
 // scrollama event handlers
 function handleStepEnter(response) {
@@ -32,13 +33,16 @@ function handleStepEnter(response) {
     step.classed('is-active', function (d, i) {
         return i === response.index;
     })
-    
+     
     if (response.index == 0) {
-        updateScatter('All');
+        updateScatterDots('All');
+        updateScatterLines('All');
     } else if (response.index == 1) {
-        updateScatter('Male');
+        updateScatterDots('Male');
+        updateScatterLines('Male');
     } else if (response.index == 2) {
-        updateScatter('Female');
+        updateScatterDots('Female');
+        updateScatterLines('Female');
     }
     
 }
