@@ -168,14 +168,23 @@ function swarmMouseover(data, thisDot, container) {
         .attr('src', data.data.picLink)
         .transition()
         .duration(200)
-        .style('width', swarmRScale(data.data.appearances) * 3 + 'px')
-        .style('height', swarmRScale(data.data.appearances) * 3 + 'px')
+        .style('width', 60 + 'px')
+        .style('height', 60 + 'px');
+        //.style('width', swarmRScale(data.data.appearances) * 3 + 'px')
+        //.style('height', swarmRScale(data.data.appearances) * 3 + 'px')
 
   }
   
   function swarmMousemove(data) {
     swarmTooltip.style("left", (d3.event.pageX) + "px")
-        .style("top", (d3.event.pageY) + "px");
+        .style("top", (d3.event.pageY) + "px")
+        .style('transform', function() {
+            if (data.data.gender == 'Female') {
+                return 'translate(35px, -50%)';
+            } else {
+                return 'translate(calc(-100% - 35px), -50%)';
+            }
+        });
 
     swarmTooltip.select('h3')
         .text(data.data.superName);
