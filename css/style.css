@@ -56,7 +56,8 @@ body {
 .copy-section {
     width:600px;
     margin:auto;
-    font-family: 'Mada', sans-serif;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight:600;
 }
 
 .copy-section p {
@@ -123,6 +124,50 @@ body {
 .swarm-y-axis .tick line{
     stroke:#3e6cae;
     stroke-width:2px;
+}
+
+.annotation-group {
+
+}
+
+.annotation-note-title {
+    font-family:'Rajdhani', sans-serif;
+    font-weight:800;
+}
+
+.annotation-note-label {
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.annotation-subject {
+    stroke-dasharray:2px 2px;
+}
+
+#heatmap-wrapper {
+    width:100%;
+    height:800px;
+    position:relative;
+}
+
+#heatmap-container {
+    margin:auto;
+    width:700px;
+    height:700px;
+}
+
+.heatmap-axis .domain{
+    stroke:white;
+}
+
+.heatmap-axis .tick line{
+   display:none;
+}
+
+.heatmap-axis .tick text{
+    fill:white;
+    font-family:'Bangers', cursive; 
+    font-size:16px;
+    letter-spacing:1px;
 }
 
 #scatter-wrapper {

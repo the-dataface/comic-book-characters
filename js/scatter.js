@@ -44,6 +44,34 @@ var scatterRadius = 2,
         }
     };
 
+function updateScatterLinesV2(gender) {
+    var data = [
+        {
+          x:[268, 293, 251, 287, 265, 269, 253, 251, 253, 260],
+          y:[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+        },
+        {
+          x:[232, 207, 249, 213, 235, 231, 247, 249, 247, 240],
+          y:[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+        }
+    ];
+
+    var indexies = d3.range( data[0].x.length );
+
+    var area = d3.svg.area()
+        .interpolate("cardinal")
+        .x0( function(d) { return data[1].x[d] } )
+        .x1( function(d) { return data[0].x[d] } )
+        .y0( function(d) { return yscale(data[1].y[d]) } )
+        .y1(  function(d) { return yscale(data[1].y[d]) } );
+                      
+	svg.append('path')
+        .datum(indexies)
+        .attr('class', 'area')
+        .attr('fill', 'lightsteelblue')
+        .attr('d', area);
+}
+
 function updateScatterLines(gender) {
     var startX = scatterXScale(57),
         endX = scatterXScale(76),

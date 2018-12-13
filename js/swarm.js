@@ -59,10 +59,12 @@ function buildSwarm()   {
             .style('height', swarmOuterH + 'px');
 
         var thisSwarmSvg = thisSwarm.append('svg')
+            .attr('id' , thisGender + '-svg')
             .attr('width', swarmOuterW / 2)
             .attr('height', swarmOuterH);
     
         var thisSwarmG = thisSwarmSvg.append('g')
+            .attr('id' , thisGender + '-g')
             .attr('transform', 'translate(' + swarmMargin.left + ', ' + swarmMargin.top + ')')
 
         var thisGenderData = comicWeightData.filter(function(d) {
@@ -77,7 +79,6 @@ function buildSwarm()   {
             .stop();
         
         for (var i = 0; i < 200; ++i) simulation.tick();
-        
 
         var cells = thisSwarmG.append("g")
             .attr("class", "cells")
@@ -109,6 +110,8 @@ function buildSwarm()   {
             });
 
     }
+
+    makeAnnotationsSwarm();
 
 }
 

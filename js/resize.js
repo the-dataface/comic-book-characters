@@ -35,6 +35,7 @@ function resizeGeneral() {
 
         initSwarm();
         initScatter();
+        initHeatmap();
     }
 }
 

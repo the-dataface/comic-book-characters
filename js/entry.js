@@ -14,6 +14,8 @@ function getData() {
         comicWeightData = prepComicWeightData(response[0]);
         scatterData = prepScatterData(response[1]);
         scatterGenderData = prepScatterData(response[2]);
+        heatmapData = prepScatterData(response[1]);
+        heatmapGenderData = prepScatterData(response[2]);
         resizeGeneral();
 	});
 }
