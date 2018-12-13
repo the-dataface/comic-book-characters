@@ -1,5 +1,5 @@
 // using d3 for convenience
-var container = d3.select('#scatter-wrapper');
+var container = d3.select('#heatmap-wrapper');
 var graphic = container.select('.scroll__graphic');
 var chart = graphic.select('.chart');
 var text = container.select('.scroll__text');
@@ -35,14 +35,11 @@ function handleStepEnter(response) {
     })
      
     if (response.index == 0) {
-        updateScatterDots('All');
-        updateScatterLines('All');
+        updateHeatmap('All');
     } else if (response.index == 1) {
-        updateScatterDots('Male');
-        updateScatterLines('Male');
+        updateHeatmap('Male');
     } else if (response.index == 2) {
-        updateScatterDots('Female');
-        updateScatterLines('Female');
+        updateHeatmap('Female');
     }
     
 }

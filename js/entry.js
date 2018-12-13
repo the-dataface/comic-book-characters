@@ -1,6 +1,8 @@
 var comicWeightData,
     scatterData,
-    scatterGenderData;
+    scatterGenderData,
+    heatmapData,
+    heatmapGenderData;
 
 //load in data for all vizzes and then build
 getData()

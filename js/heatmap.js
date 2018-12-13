@@ -28,6 +28,38 @@ var heatmapGridXRange,
     
 //other
 
+function updateHeatmap(gender) {
+    var filteredData;
+    if (gender == 'All') {
+        filteredData = heatmapData;
+    } else {
+        filteredData = heatmapGenderData.filter(function(d) {
+            return d.gender == gender;
+        })
+    }
+
+    d3.selectAll('.heatmap-rect')
+        .transition()
+        .duration(2000)
+        .attr('fill', function() {
+            var thisID = d3.select(this).attr('id'),
+                thisHeightWeight = thisID.split(' '),
+                thisHeight = parseInt(thisHeightWeight[0]),
+                thisWeight = parseInt(thisHeightWeight[1]);
+
+            var thisCountFind = filteredData.filter(function(d) {
+                return d.height == thisHeight && d.weight == thisWeight;
+            })
+
+            var thisCount = 0;
+            if (thisCountFind.length == 1) {
+                thisCount = thisCountFind[0].count;
+            }
+
+            return heatmapColorScale(thisCount);  
+        })
+}
+
 function buildHeatmap() {   
     heatmapSvg = heatmapContainer.append('svg')
         .attr('class', 'heatmap-svg')
@@ -71,11 +103,11 @@ function buildHeatmap() {
             var thisXPos = v * heatmapGridWidth,
                 thisYPos = i * heatmapGridHeight;
 
-            var thisRectG = heatmapG.append('g')
-                .attr("transform", 'translate(' + thisXPos + ', ' + thisYPos + ')')
-
             var thisXValue = heatmapGridXRange[v],
                 thisYValue = heatmapGridYRange[i];
+
+            var thisRectG = heatmapG.append('g')
+                .attr("transform", 'translate(' + thisXPos + ', ' + thisYPos + ')')
 
             var thisCountFind = heatmapData.filter(function(d) {
                 return d.height == thisXValue && d.weight == thisYValue;
@@ -87,13 +119,15 @@ function buildHeatmap() {
             }
 
             thisRectG.append('rect')
+                .attr('class', 'heatmap-rect')
+                .attr('id', thisXValue + ' ' + thisYValue)
                 .attr('x', 0)
                 .attr('y', 0)
                 .attr('width', heatmapGridWidth)
                 .attr('height', heatmapGridHeight)
                 .attr('fill', function() {
                     return heatmapColorScale(thisCount);
-                })
+                });
 
         }
 
